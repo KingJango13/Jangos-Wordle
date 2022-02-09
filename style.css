@@ -1,0 +1,44 @@
+body{
+    background-color: #000;
+}
+h1 {
+    color: #11f;
+    text-align: center;
+}
+table {
+    border: 1px solid #11f;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+    height: 350px;
+}
+table#letters {
+    height: 250px;
+}
+td {
+    border: 1px solid #11f;
+    color: #11f;
+    text-align: center;
+}
+td.letter-container {
+    height: 20px;
+    font-size: 50px;
+}
+td.current {
+    background-color: #333;
+}
+td.correct {
+    background-color: #080;
+}
+td.correct_letter {
+    background-color: #880;
+}
+button {
+    color: #fff;
+    background-color: #11f;
+    width: 75%;
+    height: 75%;
+}
+button.wrong {
+    background-color: #333;
+}
