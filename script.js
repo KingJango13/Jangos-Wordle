@@ -54,9 +54,11 @@ function handleKey(e){
                         })
                         cells.forEach(cell => {
                             var letter = cell.textContent;
-                            if(word.includes(letter) && letterCounts[letter] > 0){
-                                cell.classList.add("correct_letter");
-                                letterCounts[letter]--;
+                            if(word.includes(letter)){
+                                if(letterCounts[letter] > 0){
+                                    cell.classList.add("correct_letter");
+                                    letterCounts[letter]--;
+                                }
                             } else {
                                 for(var btn of document.getElementsByClassName("letter")){
                                     if(btn.textContent === letter.toUpperCase()){
