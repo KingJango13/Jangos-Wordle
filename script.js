@@ -47,17 +47,12 @@ function handleKey(e){
                 } else {
                     if(words.includes(wordGuess)){
                         cells.forEach((cell,i) => {
-                            if(cell.textContent === word[i]){
-                                cell.classList.add("correct");
-                                letterCounts[cell.textContent]--;
-                            }
-                        })
-                        cells.forEach(cell => {
                             var letter = cell.textContent;
                             if(word.includes(letter)){
-                                if(letterCounts[letter] > 0){
+                                if(letter === word[i]){
+                                    cell.classList.add("correct");
+                                } else {
                                     cell.classList.add("correct_letter");
-                                    letterCounts[letter]--;
                                 }
                             } else {
                                 for(var btn of document.getElementsByClassName("letter")){
@@ -69,7 +64,6 @@ function handleKey(e){
                         })
                         guessNum++;
                         letterIndex = 0;
-                        word.split("").forEach(letter => letterCounts[letter]++)
                     } else {
                         alert("Please enter a real word")
                     }
