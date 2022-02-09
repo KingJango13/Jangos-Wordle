@@ -47,11 +47,14 @@ function handleKey(e){
                 } else {
                     if(words.includes(wordGuess)){
                         cells.forEach((cell,i) => {
-                            var letter = cell.textContent;
-                            if(letter === word[i]){
+                            if(cell.textContent === word[i]){
                                 cell.classList.add("correct");
-                                letterCounts[letter]--;
-                            } else if(word.includes(letter) && letterCounts[letter] > 0){
+                                letterCounts[cell.textContent]--;
+                            }
+                        })
+                        cells.forEach(cell => {
+                            var letter = cell.textContent;
+                            if(word.includes(letter) && letterCounts[letter] > 0){
                                 cell.classList.add("correct_letter");
                                 letterCounts[letter]--;
                             } else {
