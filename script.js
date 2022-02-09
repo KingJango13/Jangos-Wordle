@@ -7,7 +7,7 @@ let wordPromise = fetch("https://gist.githubusercontent.com/cfreshman/a03ef2cba7
         window.words = x;
         return x;
     })
-    
+   
 const currentRow = () => document.querySelector("tbody").rows[guessNum];
 const currentCell = () => currentRow().cells[letterIndex];
 
