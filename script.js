@@ -7,7 +7,7 @@ let wordPromise = fetch("https://gist.githubusercontent.com/cfreshman/a03ef2cba7
         window.words = x;
         return x;
     })
-   
+    
 const currentRow = () => document.querySelector("tbody").rows[guessNum];
 const currentCell = () => currentRow().cells[letterIndex];
 
@@ -46,13 +46,12 @@ function handleKey(e){
                     alert("Game over\nThe word was " + word)
                 } else {
                     if(words.includes(wordGuess)){
-                        cells.forEach((cell,i) => {
+                        cells.forEach(cell => {
                             var letter = cell.textContent;
                             if(word.includes(letter)){
-                                if(letter === word[i]){
-                                    cell.classList.add("correct");
-                                } else {
+                                if(letterCounts[letter] > 0){
                                     cell.classList.add("correct_letter");
+                                    letterCounts[letter]--
                                 }
                             } else {
                                 for(var btn of document.getElementsByClassName("letter")){
@@ -62,6 +61,17 @@ function handleKey(e){
                                 }
                             }
                         })
+
+                        cells.forEach((cell,i) => {
+                            if(cell.textContent === word[i]){
+                                if(cell.classList.contains("correct_letter")){
+                                    cell.classList.remove("correct_letter")
+                                }
+                                cell.classList.add("correct");
+                            }
+                        })
+                        Object.values(letterCounts).forEach(count => count = 0)
+                        word.split("").forEach(letter => letterCounts[letter]++)
                         guessNum++;
                         letterIndex = 0;
                     } else {
